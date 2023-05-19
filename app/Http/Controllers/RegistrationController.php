@@ -30,10 +30,7 @@ class RegistrationController extends Controller
             'password' => bcrypt($validatedData['password']),
         ]);
 
-        // Lakukan tindakan lanjutan setelah pendaftaran sukses, seperti autentikasi pengguna
-        // atau mengirim email verifikasi, sesuai dengan kebutuhan Anda.
 
-        // Redirect pengguna ke halaman sukses pendaftaran atau halaman lain yang sesuai
-        return redirect('/')->with('success', 'Pendaftaran berhasil. Silakan masuk ke akun Anda.');
+        return redirect('/home');
     }
 }
