@@ -24,11 +24,11 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('home');
+            return redirect()->intended('products');
         }
 
 
-        return redirect()->intended('welcome');
+        return redirect()->intended('home');
     }
 
     protected function authenticated(Request $request, $user)
