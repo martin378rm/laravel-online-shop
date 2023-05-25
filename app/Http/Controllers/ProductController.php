@@ -12,13 +12,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::all();
-        // return view('products.products')->with('products', $products);
-
         $products = Product::all();
 
         return view('products.index', compact('products'));
-        // ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -35,20 +31,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // $validatedData = $request->validate([
-        //     'name' => 'required',
-        //     'qty' => 'required|integer|min:0',
-        //     'price' => 'required|numeric|min:0',
-        // ]);
-
-        // $dataProduct = Product::create([
-        //     'name' => $validatedData['name'],
-        //     'qty' => $validatedData['qty'],
-        //     'price' => $validatedData['price']
-        // ]);
-
-        // return redirect('/products');
 
         $request->validate([
             'name' => 'required',
@@ -65,11 +47,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
-        //
-        return view('products.show', compact('product'));
-    }
+    // public function show(Product $product)
+    // {
+    //     //
+    //     return view('products.edit', compact('product'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -86,18 +68,6 @@ class ProductController extends Controller
     {
         //
 
-        // $request->validate([
-        //     'name' => 'required',
-        //     'qty' => 'required|integer|min:0',
-        //     'price' => 'required|numeric|min:0',
-        // ]);
-
-        // $product->name = $request->name;
-        // $product->qty = $request->qty;
-        // $product->price = $request->price;
-
-        // $product->save();
-        // return redirect('/get');
 
         $request->validate([
             'name' => 'required',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegistrationController;
@@ -54,3 +55,6 @@ Route::post('/login', [LoginController::class, 'login']);
 
 
 Route::resource('/products', ProductController::class);
+
+
+Route::resource('/catalogs', CatalogController::class);

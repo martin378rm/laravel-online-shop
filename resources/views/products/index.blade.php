@@ -19,19 +19,19 @@
       <tbody>
           @foreach ($products as $product)
           <tr>
-            <td>{{$product->id}}</td>
-            <td>{{$product->name}}</td>
-            <td>{{$product->qty}}</td>
-            <td>{{$product->price}}</td>
-            <td>
-                <a href="{{ url('products/'. $product->id . '/edit') }}" class="btn btn-sm btn-primary">Edit</a>
-                <form method="POST" style="display: inline" action="{{ route('products.destroy',$product->id) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Hapus</button>
-                </form>
-            </td>
-        </tr>
+                <td>{{$product->id}}</td>
+                <td>{{$product->name}}</td>
+                <td>{{$product->qty}}</td>
+                <td>{{$product->price}}</td>
+                <td>
+                    <a href="{{ url('products/'. $product->id . '/edit') }}" class="btn btn-sm btn-primary">Edit</a>
+                    <form method="POST" style="display: inline" action="{{ route('products.destroy',$product->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">Hapus</button>
+                    </form>
+                </td>
+            </tr>
 
           @endforeach
               
