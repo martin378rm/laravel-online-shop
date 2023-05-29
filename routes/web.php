@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\CatalogController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +60,11 @@ Route::resource('/products', ProductController::class);
 
 
 Route::resource('/catalogs', CatalogController::class);
+
+
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+
+Route::get('/order/dashboard', [DashboardController::class, 'index'])->name('order.dashboard');
+
+Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->name('order.detail');

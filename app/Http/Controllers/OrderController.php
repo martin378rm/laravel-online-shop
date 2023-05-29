@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,31 +14,27 @@ class OrderController extends Controller
 
     public function create()
     {
-        //
-        return view('order.create');
+        $products = Product::all();
+
+        return view('order.create', compact('products'));
     }
 
 
     public function store(Request $request)
     {
-
         $request->validate([
-            'user_id' => 'required',
-            'product_id' => 'required|integer|min:0',
-            'qty' => 'required|numeric|min:0'
+            'product_id' => 'required|exists:products,id',
+            'qty' => 'required|integer|min:1',
         ]);
 
-
-        // Mendapatkan user yang sedang login
         $user = Auth::user();
 
-        // Membuat order baru
         $order = new Order();
         $order->user_id = $user->id;
-        $order->product_id = $request->input('product');
-        $order->quantity = $request->input('quantity');
+        $order->product_id = $request->input('product_id');
+        $order->qty = $request->input('qty');
         $order->save();
-        return redirect()->back()->with('success', 'Order berhasil dibuat.');
 
+        return redirect()->back()->with('success', 'Order berhasil dibuat.');
     }
 }

@@ -9,9 +9,9 @@
                         <div class="card-body">
                             <h5 class="card-title"></h5>
                             <p class="card-text">Nama: {{$product->name}} </p>
-                            <p class="card-text">Harga:  </p>
-                            <p class="card-text">Jumlah Tersedia:  </p>
-                            {{-- <a class="btn btn-primary" href="{{url('catalog/' . $product->id . '/order')}}">Order</a> --}}
+                            <p class="card-text">Harga: {{$product->price}} </p>
+                            <p class="card-text">Jumlah Tersedia: {{$product->qty}}  </p>
+                            <a href="/order/create" class="btn btn-primary" >Order</a>
                         </div>
                     </div>
                 </div>  
