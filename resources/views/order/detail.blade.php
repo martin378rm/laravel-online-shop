@@ -15,14 +15,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($order as $value)
+                {{-- @foreach($order as $value) --}}
                     <tr>
                         <td>1</td>
                         <td>{{$product->name}} </td>
-                        <td>{{ $value->qty}}</td>
-                        <td>{{ $value->qty  * $product->price  }} </td>
-                        <td>{{$value->created_at}}</td>
-                        @endforeach
+                        <td>{{ $order->qty}}</td>
+                        <td>{{ $order->qty  * $product->price  }} </td>
+                        <td>{{$order->created_at}}</td>
+                {{-- @endforeach --}}
                     </tr>
             </tbody>
         </table>

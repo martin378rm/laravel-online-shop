@@ -12,20 +12,24 @@
 
             <div class="form-group">
                 <label for="name">Nama</label>
-                <input type="text" class="form-control mt-2" id="name" name="name" required placeholder="{{$product->name}}">
+                <input type="text" class="form-control mt-2" id="name" name="name" required>
             </div>
 
             <div class="form-group">
                 <label for="qty">Jumlah</label>
-                <input type="number" class="form-control mt-2" id="qty" name="qty"  required placeholder="{{$product->qty}}">
+                <input type="number" class="form-control mt-2" id="qty" name="qty"  required>
             </div>
 
             <div class="form-group">
                 <label for="price">Harga</label>
-                <input type="number" class="form-control mt-2" id="price" name="price"  required placeholder="{{$product->price}}">
+                <input type="number" class="form-control mt-2" id="price" name="price"  required>
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Simpan</button>
         </form>
     </div>
 @endsection
+
+    {{-- placeholder="{{$product->price}}"
+    placeholder="{{$product->qty}}"
+    placeholder="{{$product->name}}" --}}
