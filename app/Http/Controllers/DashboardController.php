@@ -62,7 +62,7 @@ class DashboardController extends Controller
         $order = Order::find($id);
         // var_dump($order);
         // $data = $orders->id;
-        var_dump($order);
+        // var_dump($order);
         $product = Product::find($order->product_id);
         return view('order.detail', compact(['order', 'product']));
     }

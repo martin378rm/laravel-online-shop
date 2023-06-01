@@ -13,7 +13,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('login');
+        return view('latihan.login');
     }
 
     public function login(Request $request)
@@ -24,7 +24,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('products');
+            return redirect()->intended('catalogs');
         }
 
 

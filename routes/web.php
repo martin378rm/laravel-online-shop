@@ -30,7 +30,7 @@ Route::get('/welcome', function () {
 Route::get('/register', [RegistrationController::class, 'create']);
 Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/login', function () {
-    return view('login');
+    return view('latihan.login');
 });
 Route::post('/login', [LoginController::class, 'login']);
 
@@ -68,3 +68,11 @@ Route::post('/order/store', [OrderController::class, 'store'])->name('order.stor
 Route::get('/order/dashboard', [DashboardController::class, 'index'])->name('order.dashboard');
 
 Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->name('order.detail');
+
+
+
+
+
+Route::get('/latihan', function () {
+    return view('latihan.register');
+});
