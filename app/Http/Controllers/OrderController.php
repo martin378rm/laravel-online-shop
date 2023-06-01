@@ -38,11 +38,18 @@ class OrderController extends Controller
             $order->user_id = $user->id;
             $order->product_id = $request->input('product_id');
             $order->qty = $request->input('qty');
-            $order->save();
 
             $product = Product::find($order->product_id);
             $product->qty -= $order->qty;
-            $product->save();
+
+
+            if ($product->qty < $order->qty) {
+                echo "<h1>jumlah barang tidak mencukupi</h1>";
+            } else {
+                $order->save();
+                $product->save();
+            }
+
 
             DB::commit();
         } catch (Exception $e) {
