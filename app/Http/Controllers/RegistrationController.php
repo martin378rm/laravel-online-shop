@@ -9,7 +9,7 @@ class RegistrationController extends Controller
 {
     public function create()
     {
-        return view('register');
+        return view('latihan.register');
     }
 
     public function store(Request $request)
@@ -31,6 +31,6 @@ class RegistrationController extends Controller
         ]);
 
 
-        return redirect('/home');
+        return redirect('/login');
     }
 }
