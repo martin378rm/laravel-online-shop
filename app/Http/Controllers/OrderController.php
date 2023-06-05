@@ -44,7 +44,11 @@ class OrderController extends Controller
 
 
             if ($product->qty < $order->qty) {
-                echo "<h1>jumlah barang tidak mencukupi</h1>";
+                // return back()->with('message', 'Stok barang tidak mencukupi');
+                // return redirect('/order/create')->with('message', 'Stok barang tidak mencukupi');
+
+                echo "<script>alert('jumlah stok tidak mencukupi')</script>";
+                return redirect('/order/create');
             } else {
                 $order->save();
                 $product->save();

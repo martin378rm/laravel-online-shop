@@ -24,7 +24,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('latihan.home');
 });
 
 Route::get('/register', [RegistrationController::class, 'create']);

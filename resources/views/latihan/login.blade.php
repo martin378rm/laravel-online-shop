@@ -20,6 +20,11 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('admin_asset/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+    {{-- sweet alert --}}
+    <script src="
+        https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js
+     "></script>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -97,6 +102,16 @@
         </div>
 
     </div>
+
+    @if (Session::has('message'))
+        <script>
+            swal("Message", "{{Session::get('message')}}", 'warning',{
+                button:true,
+                button:'OK',
+                dangerMode:true
+            })
+        </script>
+    @endif
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin_asset/vendor/jquery/jquery.min.js')}}"></script>

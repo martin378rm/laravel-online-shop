@@ -28,7 +28,8 @@ class LoginController extends Controller
         }
 
 
-        return redirect()->intended('home');
+        // return redirect()->intended('home');
+        return back()->with('message', 'password atau email salah');
     }
 
     protected function authenticated(Request $request, $user)

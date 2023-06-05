@@ -14,7 +14,9 @@ class CatalogController extends Controller
     {
         $products = Product::all();
 
-        return view('catalog.index', compact('products'));
+        // return view('catalog.index', compact('products'));
+        return view('latihan.home', compact('products'));
+
         // ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

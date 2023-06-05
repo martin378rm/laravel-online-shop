@@ -27,4 +27,15 @@
             </div>
         </div>
     </div>
+        @if (Session::has('message'))
+            <script>
+                swal("Message", "{{Session::get('message')}}", 'warning',{
+                    button:true,
+                    button:'OK',
+                    dangerMode:true
+                })
+            </script>
+        @endif
 @endsection
+
+
