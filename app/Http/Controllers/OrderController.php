@@ -17,8 +17,9 @@ class OrderController extends Controller
     public function create()
     {
         $products = Product::all();
+        $user = Auth::user();
 
-        return view('order.create', compact('products'));
+        return view('order.create', compact('products', 'user'));
     }
 
 
@@ -47,8 +48,8 @@ class OrderController extends Controller
                 // return back()->with('message', 'Stok barang tidak mencukupi');
                 // return redirect('/order/create')->with('message', 'Stok barang tidak mencukupi');
 
-                echo "<script>alert('jumlah stok tidak mencukupi')</script>";
-                return redirect('/order/create');
+                // echo "<script>alert('jumlah stok tidak mencukupi')</script>";
+                return redirect('order/create')->with('message', 'stok tidak mencukupi');
             } else {
                 $order->save();
                 $product->save();

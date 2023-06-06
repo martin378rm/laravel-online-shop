@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -24,6 +25,8 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             return redirect()->intended('catalogs');
         }
 
@@ -35,5 +38,17 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         return redirect()->intended();
+    }
+
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/welcome');
     }
 }

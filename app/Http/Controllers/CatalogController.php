@@ -13,9 +13,10 @@ class CatalogController extends Controller
     public function index()
     {
         $products = Product::all();
+        $user = Auth::user();
 
         // return view('catalog.index', compact('products'));
-        return view('latihan.home', compact('products'));
+        return view('latihan.home', compact('products', 'user'));
 
         // ->with('i', (request()->input('page', 1) - 1) * 5);
     }

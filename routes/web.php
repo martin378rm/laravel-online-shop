@@ -24,15 +24,15 @@ Route::get('/home', function () {
 });
 
 Route::get('/welcome', function () {
-    return view('latihan.home');
+    return view('welcome');
 });
 
 Route::get('/register', [RegistrationController::class, 'create']);
 Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/login', function () {
     return view('latihan.login');
-});
-Route::post('/login', [LoginController::class, 'login']);
+})->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Route::get('/create', function () {
 //     return view('products.create');
@@ -56,18 +56,18 @@ Route::post('/login', [LoginController::class, 'login']);
 // Route::put('/edit/{id}', [ProductController::class, 'update']);
 
 
-Route::resource('/products', ProductController::class);
+Route::resource('/products', ProductController::class)->middleware('auth');
 
 
-Route::resource('/catalogs', CatalogController::class);
+Route::resource('/catalogs', CatalogController::class)->middleware('auth');
 
 
-Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
-Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create')->middleware('auth');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
 
-Route::get('/order/dashboard', [DashboardController::class, 'index'])->name('order.dashboard');
+Route::get('/order/dashboard', [DashboardController::class, 'index'])->name('order.dashboard')->middleware('auth');
 
-Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->name('order.detail');
+Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->name('order.detail')->middleware('auth');
 
 
 
@@ -76,3 +76,10 @@ Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->
 Route::get('/latihan', function () {
     return view('latihan.register');
 });
+
+
+Route::get('app', function () {
+    return view('layouts.app');
+});
+
+Route::post('logout', [LoginController::class, 'logout']);
