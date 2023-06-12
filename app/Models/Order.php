@@ -10,10 +10,19 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+
+
+
 
     protected $guarded = ['id'];
 }

@@ -15,8 +15,9 @@ class CatalogController extends Controller
         $products = Product::all();
         $user = Auth::user();
 
-        // return view('catalog.index', compact('products'));
-        return view('latihan.home', compact('products', 'user'));
+        // return view('catalog.index', compact('products', 'user'));
+        return view('latihan.catalog', ["active" => "catalogs"], compact('products', 'user'));
+        // return view('latihan.home', compact('products'));
 
         // ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -25,7 +26,11 @@ class CatalogController extends Controller
     {
 
         $product = Product::find($id);
-        return view('catalog.detail')->with('product', $product);
+        $user = Auth::user();
+        // return view('catalog.detail')->with('product', $product);
+        // return view('latihan.detail_product_catalog', ["active" => "catalog", compact('product', 'user')]);
+
+        return view('latihan.detail_product_catalog', ['active' => 'catalogs'], compact('product', 'user'));
     }
 
     public function show(Product $product, $id)

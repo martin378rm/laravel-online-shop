@@ -1,8 +1,8 @@
-@extends('layouts.app')
-@section('container')
-<body id="page-top">
+{{-- @extends('layouts.app')
+@section('container') --}}
 
     <!-- Page Wrapper -->
+    {{--  
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -319,7 +319,7 @@
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a> --}}
-                                <div class="dropdown-divider"></div>
+                                {{-- <div class="dropdown-divider"></div>
 
                                 <form action="/logout" method="post">
                                     @csrf
@@ -334,16 +334,15 @@
 
                     </ul>
 
-                </nav>
+                </nav> --}}
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
+                {{-- <div class="container-fluid"> --}}
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Product</h1>
+                    {{-- <h1 class="h3 mb-4 text-gray-800">Product</h1> --}}
                       {{-- katalog --}}
-                      <div class="row">
+                      {{-- <div class="row">
                         @foreach ($products as $product)
                             <div class="col-md-4 mb-2">
                                 <div class="card">
@@ -357,38 +356,37 @@
                                 </div>
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
                     {{-- end katalog --}}
-
-                </div>
+                {{-- </div> --}}
                 <!-- /.container-fluid -->
 
-            </div>
+            {{-- </div> --}}
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {{-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- End of Footer -->
 
-        </div>
+        {{-- </div> --}}
         <!-- End of Content Wrapper -->
 
-    </div>
+    {{-- </div> --}}
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
+    {{-- <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
-    </a>
+    </a> --}}
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -407,4 +405,32 @@
         </div>
     </div>
 
+@endsection --}}
+
+
+@extends('layouts.app')
+@section('container')
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Product</h1>
+      {{-- katalog --}}
+      <div class="row">
+        @foreach ($products as $product)
+            <div class="col-md-4 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Nama: {{$product->name}} </p>
+                        <p class="card-text">Harga: {{$product->price}} </p>
+                        <p class="card-text">Jumlah Tersedia:  {{$product->qty}} </p>
+                        <a href="{{ url('catalogs/'. $product->id . '/edit') }}" class="btn btn-sm btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    {{-- end katalog --}}
+</div>
+<!-- /.container-fluid -->
 @endsection

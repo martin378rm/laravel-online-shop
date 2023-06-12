@@ -23,12 +23,12 @@
     
 
 </head> --}}
-
-@extends('layouts.app')
+{{--  --}}
+@extends('layouts.start')
 @section('container')
     
 
-<body class="bg-gradient-primary">
+{{-- <body class="bg-gradient-primary"> --}}
 
     <div class="container">
 

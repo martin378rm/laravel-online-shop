@@ -19,7 +19,8 @@ class OrderController extends Controller
         $products = Product::all();
         $user = Auth::user();
 
-        return view('order.create', compact('products', 'user'));
+        // return view('order.create', ["active" => "order"], compact('products', 'user'));
+        return view('latihan.order_create', ["active" => "order"], compact('products', 'user'));
     }
 
 
@@ -45,23 +46,54 @@ class OrderController extends Controller
 
 
             if ($product->qty < $order->qty) {
-                // return back()->with('message', 'Stok barang tidak mencukupi');
-                // return redirect('/order/create')->with('message', 'Stok barang tidak mencukupi');
-
-                // echo "<script>alert('jumlah stok tidak mencukupi')</script>";
-                return redirect('order/create')->with('message', 'stok tidak mencukupi');
+                return redirect('orders/create')->with('message', 'stok tidak mencukupi');
             } else {
                 $order->save();
                 $product->save();
             }
 
-
             DB::commit();
+            return redirect('/order/dashboard');
+
         } catch (Exception $e) {
             DB::rollBack();
             throw $e;
         }
 
         // return redirect()->back()->with('success', 'Order berhasil dibuat.');
+    }
+
+    public function edit(Order $order)
+    {
+        $user = Auth::user();
+        // return view('products.edit', compact('product'));
+        return view('latihan.edit_order', ["active" => "manajemen_order"], compact('order', 'user'));
+    }
+
+    public function update(Request $request, Order $order)
+    {
+        $user = Auth::user(); // Mendapatkan user yang sedang login
+        // Validasi data yang diterima dari form
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        // Cari order berdasarkan user_id dan id
+        $order = Order::where('user_id', $user->id)
+            ->findOrFail($order->id);
+
+        // Update jumlah (quantity) order
+        $order->quantity = $request->quantity;
+        $order->save();
+
+        // Redirect atau melakukan tindakan lain setelah berhasil memperbarui order
+        return redirect()->route('order.index')
+            ->with('success', 'Order berhasil diperbarui');
+    }
+
+    public function destroy(Order $order)
+    {
+        //
+        $order->delete();
     }
 }

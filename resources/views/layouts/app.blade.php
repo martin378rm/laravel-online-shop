@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Latihan</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{'admin_asset/vendor/fontawesome-free/css/all.min.css'}}" rel="stylesheet" type="text/css">
@@ -26,15 +26,56 @@
      "></script>
 
      
-    </head>
+</head>
     
-    <body>
-      
-      {{-- section product --}}
-      <div class="">
-        @yield('container')
+<body id="page-top">
+
+  
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      @include('partial.sidebar')
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+
+              <!-- Topbar -->
+              @include('partial.navbar')
+              <!-- End of Topbar -->
+
+              <!-- Begin Page Content -->
+              <div>
+                @yield('container')
+              </div>
+              <!-- /.container-fluid -->
+
+          </div>
+          <!-- End of Main Content -->
+
+          <!-- Footer -->
+          {{-- <footer class="sticky-footer bg-white">
+              <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                      <span>Copyright &copy; Your Website 2020</span>
+                  </div>
+              </div>
+          </footer> --}}
+          <!-- End of Footer -->
+
       </div>
-      {{-- end section product --}}
+      <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('admin_asset/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('admin_asset/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

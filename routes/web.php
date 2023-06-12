@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController2;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
@@ -19,13 +20,16 @@ use App\Http\Controllers\RegistrationController;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
+
+
+// route login dan register
 
 Route::get('/register', [RegistrationController::class, 'create']);
 Route::post('/register', [RegistrationController::class, 'store']);
@@ -34,52 +38,28 @@ Route::get('/login', function () {
 })->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-// Route::get('/create', function () {
-//     return view('products.create');
-// });
-
-// Route::post('/create', [ProductController::class, 'store']);
-
-// Route::get('/edit/{id}', function () {
-//     return view('products.edit');
-// });
-
-// Route::get('/products', function () {
-//     return view('/products.products');
-// });
-
-// Route::get('/get', [ProductController::class, 'index']);
-// Route::get('/edit', function () {
-//     return view('products.edit');
-// });
-
-// Route::put('/edit/{id}', [ProductController::class, 'update']);
 
 
+
+// route product
 Route::resource('/products', ProductController::class)->middleware('auth');
 
-
+// route catalog / etalase product
 Route::resource('/catalogs', CatalogController::class)->middleware('auth');
 
 
-Route::get('/order/create', [OrderController::class, 'create'])->name('order.create')->middleware('auth');
-Route::post('/order/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
 
+// route order
+// Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create')->middleware('auth');
+// Route::post('/orders/store', [OrderController::class, 'store'])->name('order.store')->middleware('auth');
+// Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+// Route::put('orders/update', [OrderController::class, 'update'])->name('order.update');
+// Route::delete('order/destroy', [OrderController::class, 'store'])->name('order.destroy');
+
+
+Route::resource('orders', OrderController2::class)->middleware('auth');
+
+// dashboard controller
 Route::get('/order/dashboard', [DashboardController::class, 'index'])->name('order.dashboard')->middleware('auth');
 
 Route::get('/order/{product_id}/detail', [DashboardController::class, 'show'])->name('order.detail')->middleware('auth');
-
-
-
-
-
-Route::get('/latihan', function () {
-    return view('latihan.register');
-});
-
-
-Route::get('app', function () {
-    return view('layouts.app');
-});
-
-Route::post('logout', [LoginController::class, 'logout']);
